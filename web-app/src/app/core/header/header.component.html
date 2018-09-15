@@ -26,17 +26,27 @@
           <a class="signip banner-right" [routerLink]="'/signin'">Sign In</a>
         </li>
         <li routerLinkActive="active" *ngIf="isUserLoggedIn()">
-            <a class="signip banner-right" (click)="onLogoff()">Logoff</a>
-          </li>
-        <li routerLinkActive="active">
-          <a class="aboutus banner-right" [routerLink]="'/aboutus'">About Us</a>
+          <a class="signip banner-right" (click)="onLogoff()">Logoff</a>
         </li>
-        <li routerLinkActive="active">
-          <a class="howto banner-right" [routerLink]="'/howto'">How To</a>
-        </li>
+
         <li routerLinkActive="active">
           <a class="howto banner-right" [routerLink]="'/user'">User</a>
         </li>
+
+        <li class="dropdown" appDropdown>
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+            <li routerLinkActive="active">
+              <a class="aboutus banner-right" style="cursor: pointer;" [routerLink]="'/aboutus'">About Us</a>
+            </li>
+            <li routerLinkActive="active">
+              <a class="howto banner-right" style="cursor: pointer;" [routerLink]="'/howto'">How To</a>
+            </li>
+
+          </ul>
+        </li>
+
     </ul>
   </div>
 </nav>

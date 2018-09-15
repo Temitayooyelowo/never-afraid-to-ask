@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { WildCardRoutingModule } from './core/page-not-found/wildcard-routing.module';
 import { UserComponent } from './user/user.component';
+import { CollectiveModule } from './collective/collective.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { UserComponent } from './user/user.component';
   imports: [
     BrowserModule,
     CoreModule,
+    CollectiveModule,
     AuthModule,
     WildCardRoutingModule /** Has to be in the last position */
   ],
