@@ -1,0 +1,48 @@
+.left-div {
+  background-color: rgb(170,198,206);
+  opacity: 79%;
+  height: 95vh;
+}
+
+.right-div {
+  background-color: rgb(48, 82, 95);
+  opacity: 79%;
+  height: 95vh;
+  color: rgb(189,189,189);
+  font-style: Apple SD Gothic Neo;
+}
+
+::placeholder {
+  color: rgb(189,189,189);
+  opacity: 1;
+  font-size: 20px;
+}
+
+.form-container {
+  padding-top: 25vh;
+  padding-bottom: 25vh;
+}
+
+.sign-in {
+  font-size: 3rem;
+  padding-bottom: 20px;
+}
+
+input {
+  padding:4px;
+  margin-bottom: 30px;
+  border:none;
+  border-bottom:1px solid rgb(189,189,189);
+  background-color: rgb(48, 82, 95);
+  width:100%
+}
+
+input:focus {
+  outline: none;
+}
+
+.sign-up {
+  font-size: 17px;
+  padding-top: 7vh;
+  padding-left: 25%;
+}
