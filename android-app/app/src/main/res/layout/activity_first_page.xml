@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:layout_marginTop="475dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/sign-in"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="113dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorButton"
+            android:text="Sign In"
+            android:textAppearance="@android:style/TextAppearance.Widget.Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sign-up"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.406" />
+
+        <Button
+            android:id="@+id/sign-up"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="113dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="51dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorButton"
+            android:text="Sign Up"
+            android:textAppearance="@android:style/TextAppearance.Widget.Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sign-in"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.406" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="104dp"
+        android:layout_height="186dp"
+        android:layout_marginBottom="228dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="logo"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="316dp"
+        android:layout_height="114dp"
+        android:layout_marginBottom="131dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginStart="34dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/never_afraid_to_ask" />
+
+</android.support.constraint.ConstraintLayout>
