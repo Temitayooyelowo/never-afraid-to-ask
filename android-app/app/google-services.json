@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "304332158601",
+    "firebase_url": "https://thehiddentent.firebaseio.com",
+    "project_id": "thehiddentent",
+    "storage_bucket": "thehiddentent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304332158601:android:a5e43276e5d79e04",
+        "android_client_info": {
+          "package_name": "com.example.yizhangcao.neverafraidtoask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304332158601-aradtq9oea06a19rsbl4fmicpge3i2g2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yizhangcao.neverafraidtoask",
+            "certificate_hash": "385094dda444ba8144e8b57d515e2b1f95257554"
+          }
+        },
+        {
+          "client_id": "304332158601-uop8kmvd17tgk1s32hk7pqrc9ik1o9ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6EVp28S2sf7SH5aDAv-ChxYq5WCZD_0M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304332158601-uop8kmvd17tgk1s32hk7pqrc9ik1o9ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
