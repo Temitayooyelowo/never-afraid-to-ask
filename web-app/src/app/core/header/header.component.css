@@ -10,4 +10,8 @@ nav {
   opacity: 47;
 }
 
+li {
+  cursor: pointer;
+}
+
 

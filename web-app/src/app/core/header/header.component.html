@@ -19,13 +19,21 @@
         </div>
       </form>
       -->
-
-          <li routerLinkActive="active"><a class="signup banner-right" [routerLink]="'/signup'"><!--<span class="glyphicon glyphicon-user"></span> -->Sign Up</a></li>
-          <li routerLinkActive="active"><a class="signip banner-right" [routerLink]="'/signin'"><!--<span class="glyphicon glyphicon-log-in"></span> -->Sign In</a></li>
-          <li routerLinkActive="active"><a class="aboutus banner-right" [routerLink]="'/aboutus'"><!--<span class="glyphicon glyphicon-log-in"></span> -->About Us</a></li>
-          <li routerLinkActive="active"><a class="howto banner-right" [routerLink]="'/howto'"><!--<span class="glyphicon glyphicon-log-in"></span> -->How To</a></li>
-
-
+        <li routerLinkActive="active">
+          <a class="signup banner-right" [routerLink]="'/signup'">Sign Up</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
+          <a class="signip banner-right" [routerLink]="'/signin'">Sign In</a>
+        </li>
+        <li routerLinkActive="active" *ngIf="isUserLoggedIn()">
+            <a class="signip banner-right" (click)="onLogoff()">Logoff</a>
+          </li>
+        <li routerLinkActive="active">
+          <a class="aboutus banner-right" [routerLink]="'/aboutus'">About Us</a>
+        </li>
+        <li routerLinkActive="active">
+          <a class="howto banner-right" [routerLink]="'/howto'">How To</a>
+        </li>
 
 
     </ul>
