@@ -1,13 +1,13 @@
 .left-div {
   background-color: rgb(170,198,206);
   opacity: 79%;
-  height: 95vh;
+  height: 100vh;
 }
 
 .right-div {
   background-color: rgb(48, 82, 95);
   opacity: 79%;
-  height: 95vh;
+  height: 100vh;
   color: rgb(189,189,189);
   font-style: Apple SD Gothic Neo;
 }
