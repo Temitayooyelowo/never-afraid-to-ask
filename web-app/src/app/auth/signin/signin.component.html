@@ -1,0 +1,46 @@
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input
+            type="email"
+            name="email"
+            formControlName='email'
+            class="form-control"
+          />
+      </div>
+
+      <div *ngIf="signInForm.controls['email'].touched && !signInForm.controls['email'].valid">
+        <p class="alert alert-danger"><strong>Error!</strong> Please enter a valid email!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          formControlName="password"
+          class="form-control"
+        />
+      </div>
+
+      <div *ngIf="signInForm.controls['password'].touched && !signInForm.controls['password'].valid">
+        <p class="alert alert-danger"><strong>Error!</strong> Please enter a valid password!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-xs-12">
+          <button class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+</form>
