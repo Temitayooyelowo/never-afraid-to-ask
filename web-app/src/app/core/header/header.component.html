@@ -19,7 +19,7 @@
         </div>
       </form>
       -->
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
           <a class="signup banner-right" [routerLink]="'/signup'">Sign Up</a>
         </li>
         <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
@@ -34,8 +34,9 @@
         <li routerLinkActive="active">
           <a class="howto banner-right" [routerLink]="'/howto'">How To</a>
         </li>
-
-
+        <li routerLinkActive="active">
+          <a class="howto banner-right" [routerLink]="'/user'">User</a>
+        </li>
     </ul>
   </div>
 </nav>

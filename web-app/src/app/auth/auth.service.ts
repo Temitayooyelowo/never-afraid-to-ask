@@ -1,28 +1,73 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase';
+import { AngularFireDatabase } from '@angular/fire/database';
+
+
+export class UserInfo {
+    email: string;
+    photoURL: string;
+    roles: {
+      student: boolean,
+      instructor: boolean,
+      admin: boolean
+    };
+    school: string;
+
+    constructor(email: string, photoURL: string, roles, school: string) {
+      this.email = email;
+      this.photoURL = photoURL;
+      this.roles = roles;
+      this.school = school;
+    }
+}
+
+export class CoursesTaken {
+  courseCode: '';
+  professor: '';
+  school: '';
+
+  constructor(courseCode, professor, school) {
+    this.courseCode = courseCode;
+    this.professor = professor;
+    this.school = school;
+  }
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   token: string;
+  STUDENT = 'student';
+  INSTRUCTOR = 'instructor';
+  ADMIN = 'admin';
 
   constructor(private firebaseAuth: AngularFireAuth,
+              private firebaseDatabase: AngularFireDatabase,
               private router: Router) { }
 
-  signupUserWithEmail(email: string, password: string) {
+  signupUserWithEmail(
+      email: string, password: string, userRole: string = 'lkjlkj') {
     this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password).then(
-      (user) => {
-        console.log('User ---> ', user);
-        console.log('Auth State --->', this.firebaseAuth.authState);
-        console.log('Current User', this.firebaseAuth.auth.currentUser.getIdToken);
-      }
-    )
-      .catch(
-        error => console.error('An error occured when signining up the user.')
-      );
+    (user) => {
+
+      // if (userRole === 'professor') {
+      //   this.firebaseDatabase.database.ref('/courses-taken').push(new CoursesTaken());
+      // }
+
+      const userRoles = {
+        'student': userRole === this.STUDENT,
+        'instructor': userRole === this.INSTRUCTOR,
+        'admin': userRole === this.ADMIN
+      };
+
+      this.firebaseDatabase.database.ref('/users').push(new UserInfo(email, '', userRoles, ''));
+    })
+    .catch(
+      error => console.error('An error occured when signining up the user.')
+    );
   }
 
   loginUserWithEmail(email, password) {
