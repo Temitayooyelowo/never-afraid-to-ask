@@ -1,2 +1,2 @@
 # HackTheNorth
-Repository for the hiddenTent Project at HackTheNorth 2018
+Single Page Application for the hiddenTent Project at HackTheNorth 2018
