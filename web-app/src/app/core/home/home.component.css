@@ -3,6 +3,30 @@
   max-height: 100%;
 }
 
+h1 {
+  color: rgba(0, 51, 153, 0.733);
+  text-align: left;
+  font-size: 80px;
+  padding-left: 100px;
+}
+
 .div {
   overflow:hidden;
+}
+
+.background {
+  background-image: url("https://imgur.com/download/EvcLsaR");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.footerHeart{
+  color: rgba(0, 51, 153, 0.733);
+  text-align: left;
+  font-size: 16px;
+  padding-left: 18px;
 }

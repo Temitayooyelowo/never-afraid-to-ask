@@ -6,11 +6,13 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { WildCardRoutingModule } from './core/page-not-found/wildcard-routing.module';
 import { UserComponent } from './user/user.component';
+import { AboutUsComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
