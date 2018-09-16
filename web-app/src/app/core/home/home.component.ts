@@ -8,8 +8,9 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  role: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,9 @@ export class HomeComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
+  onSetupCourse() {
+
+  }
   // isStudent() {
 
   // }

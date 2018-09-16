@@ -72,3 +72,12 @@
         <p class="footerHeart">Made with &hearts; from TheHiddenTent 2018</p>
     </div>
 </div>
+
+
+<div class="row" *ngIf="authService.role === 'professor'">
+  <div class="col-xs-12">
+    <h1>I am a professor</h1>
+
+    <button type="button" (click)="onSetupCourse()"> Would you like to setup a course? </button>
+  </div>
+</div>

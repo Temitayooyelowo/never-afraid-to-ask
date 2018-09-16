@@ -43,27 +43,47 @@ export class AuthService {
   STUDENT = 'student';
   INSTRUCTOR = 'instructor';
   ADMIN = 'admin';
+  role: string;
 
   constructor(private firebaseAuth: AngularFireAuth,
               private firebaseDatabase: AngularFireDatabase,
               private router: Router) { }
 
+  getUserInformation() {
+
+    const user = this.firebaseAuth.auth.currentUser;
+    if (!user) {
+      return;
+    }
+    const userEmail = user.email;
+
+    this.firebaseDatabase.database.ref().child('users').orderByChild('email').equalTo(userEmail)
+    .once('value').then((snapshot) => {
+      let data = snapshot.val();
+      console.log(data);
+
+      snapshot.forEach((data2) => {
+        const key = data2.key;
+        data = data[key];
+        if (!!data && !!data['roles']) {
+          this.role = data['roles'][0].index;
+        }
+      });
+
+      return data;
+    });
+    // return this.firebaseAuth.auth.currentUser;
+  }
+
   signupUserWithEmail(
-      email: string, password: string, userRole: string = 'lkjlkj') {
+      email: string, password: string, userRole: string = 'student', school: string) {
     this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password).then(
     (user) => {
 
-      // if (userRole === 'professor') {
-      //   this.firebaseDatabase.database.ref('/courses-taken').push(new CoursesTaken());
-      // }
-
-      const userRoles = {
-        'student': userRole === this.STUDENT,
-        'instructor': userRole === this.INSTRUCTOR,
-        'admin': userRole === this.ADMIN
-      };
-
-      this.firebaseDatabase.database.ref('/users').push(new UserInfo(email, '', userRoles, ''));
+      this.role = userRole;
+      this.firebaseDatabase.database.ref('/users').push(new UserInfo(email, '', userRole, school));
+      this.loginUserWithEmail(email, password);
+      this.router.navigate(['/home']);
     })
     .catch(
       error => console.error('An error occured when signining up the user.')
@@ -75,9 +95,13 @@ export class AuthService {
       .then(
         response => {
           this.router.navigate(['/']);
+          console.log(this.firebaseAuth.auth.currentUser);
           this.firebaseAuth.auth.currentUser.getIdToken()
             .then(
-              (token: string) => this.token = token
+              (token: string) => {
+                this.token = token;
+                this.getUserInformation();
+              }
             );
         }
       )
@@ -89,6 +113,7 @@ export class AuthService {
   logoutUser() {
     this.firebaseAuth.auth.signOut();
     this.token = null;
+    this.role = null;
   }
 
   getToken() {

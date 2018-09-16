@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
 import { CollectiveModule } from './collective/collective.module';
 import { ChatAppComponent } from './chat-app/chat-app.component';
+import { QuestionsComponent } from './questions/questions.component';
 import { HowToComponent } from './howto/howto.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { HowToComponent } from './howto/howto.component';
     UserComponent,
     ChatAppComponent,
     AboutUsComponent,
+    QuestionsComponent,
     HowToComponent
   ],
   imports: [
