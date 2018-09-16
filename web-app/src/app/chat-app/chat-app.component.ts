@@ -32,6 +32,7 @@ export class ChatAppComponent implements OnInit {
     const message = this.form.value.message;
     this.user.content = message;
     this.chatAppService.sendMessage(this.user);
+    this.form.reset({});
   }
 
   loadMessages() {
