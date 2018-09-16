@@ -26,6 +26,8 @@ export class SigninComponent implements OnInit {
     if (this.signInForm.valid) {
       this.authService.loginUserWithEmail(email, password);
     }
+
+    console.log('User role ---> ', this.authService.role);
   }
 
 }

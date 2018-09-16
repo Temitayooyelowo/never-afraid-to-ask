@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl} from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormArray} from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 
@@ -16,18 +16,34 @@ export interface Role {
 })
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
+  chooseRoles = ['Student', 'Professor', 'Admin'];
 
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit() {
+  private initForm() {
+    const schoolsArray = new FormArray([]);
+
     this.signUpForm = new FormGroup({
       'email': new FormControl('', [Validators.required, Validators.email]),
       'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
-      'role': new FormControl(''/*, Validators.required*/),
+      'role': new FormArray([
+        new FormGroup({
+          'index': new FormControl('student', Validators.required)
+        }),
+      ]),
       'school': new FormControl('', Validators.required)
     });
   }
+
+  ngOnInit() {
+    this.initForm();
+  }
+
+  getControls() {
+    return (<FormArray>this.signUpForm.get('role')).controls;
+  }
+
 
   onSignUp() {
     const email = this.signUpForm.value.email;
@@ -35,7 +51,8 @@ export class SignupComponent implements OnInit {
     const role = this.signUpForm.value.role;
     const school = this.signUpForm.value.school;
 
-    this.authService.signupUserWithEmail(email, password);
+    console.log(this.signUpForm);
+    this.authService.signupUserWithEmail(email, password, role, school);
   }
 
 

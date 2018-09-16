@@ -10,13 +10,15 @@ import { UserComponent } from './user/user.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
 import { CollectiveModule } from './collective/collective.module';
 import { ChatAppComponent } from './chat-app/chat-app.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ChatAppComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,

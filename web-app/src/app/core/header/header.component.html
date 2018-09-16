@@ -27,7 +27,7 @@
         </li>
 
         <li routerLinkActive="active">
-          <img class="user banner-right" [routerLink]="'/user'" style="opacity: 10%; padding: 10px" src="https://imgur.com/download/FP4TAub">
+          <img class="user banner-right" *ngIf="isUserLoggedIn()" [routerLink]="'/user'" style="opacity: 10%; padding: 10px" src="https://imgur.com/download/FP4TAub">
         </li>
 
         <li class="dropdown" appDropdown>
