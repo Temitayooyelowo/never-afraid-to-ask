@@ -13,8 +13,8 @@ h1 {
 .right-div {
   background-color: rgba(170,198,206, .79);
   height: 100vh;
-  color: rgb(189,189,189);
-  font-style: Helevitica;
+  color: rgba(0, 51, 153, 0.733);
+  font-style: Apple SD Gothic Neo;
 }
 
 ::placeholder {
