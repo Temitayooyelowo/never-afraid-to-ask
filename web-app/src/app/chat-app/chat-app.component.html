@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p class="classroom-title">{{ user.courseCode }}</p>
+
+    <!-- <div class="messages">
+      <ul class="chat-messages" *ngFor="let message of messages">
+        <li> Key: {{ message.key }}</li>
+        <li> Name: {{ message.name }}</li>
+        <li> Text: {{ message.text }}</li>
+        <li> Profile Pic: {{ message.profilePicUrl }}</li>
+        <li> Image Url: {{ message.imageUrl }}</li>
+      </ul>
+    </div> -->
+
+    <div class="row messages">
+        <div class="col-xs-12 chat-messages">
+          <div *ngFor="let message of messages">
+
+             <p> {{ message.courseContent }} </p>
+             <p> {{ message.content }} </p>
+             <p> {{ message.courseCode }} </p>
+            <p>  {{ message.timeStamp }} </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <form (ngSubmit)="onSendMessage()" #f="ngForm">
+        <input type="text" name="message" placeholder="Send Message" class="form-control" ngModel/>
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </div>
+
+  </div>
+</div>

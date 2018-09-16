@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -8,11 +9,13 @@ import { WildCardRoutingModule } from './core/page-not-found/wildcard-routing.mo
 import { UserComponent } from './user/user.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
 import { CollectiveModule } from './collective/collective.module';
+import { ChatAppComponent } from './chat-app/chat-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
+    ChatAppComponent,
     AboutUsComponent
   ],
   imports: [
@@ -20,6 +23,7 @@ import { CollectiveModule } from './collective/collective.module';
     CoreModule,
     CollectiveModule,
     AuthModule,
+    FormsModule,
     WildCardRoutingModule /** Has to be in the last position */
   ],
   providers: [],
