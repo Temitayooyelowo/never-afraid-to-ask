@@ -19,7 +19,7 @@ import { HowToComponent } from './howto/howto.component';
     UserComponent,
     ChatAppComponent,
     AboutUsComponent,
-    QuestionsComponent
+    QuestionsComponent,
     HowToComponent
   ],
   imports: [
