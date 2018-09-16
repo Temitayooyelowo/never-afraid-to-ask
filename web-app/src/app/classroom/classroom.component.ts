@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -8,10 +8,11 @@ import { filter } from 'rxjs/operators';
   templateUrl: './classroom.component.html',
   styleUrls: ['./classroom.component.css']
 })
-export class ClassroomComponent implements OnInit {
+export class ClassroomComponent implements OnInit, OnDestroy {
   currentMessage: { };
   previousMessage: { };
   classroom: string;
+  subscription;
 
   constructor(private ref: ChangeDetectorRef,
               private route: ActivatedRoute,
@@ -19,13 +20,15 @@ export class ClassroomComponent implements OnInit {
 
   ngOnInit() {
 
-      this.route.queryParams.pipe(
+      this.subscription = this.route.queryParams.pipe(
         filter(params => params.room)
       )
       .subscribe(params => {
 
         this.classroom = params.room;
         console.log(this.classroom); // popular
+
+        this.loadMessages();
       });
 
   }
@@ -39,11 +42,16 @@ export class ClassroomComponent implements OnInit {
         timeStamp: data.timeStamp,
         userId: data.userId
       };
+
       this.ref.detectChanges();
     };
 
-    this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(2).on('child_added', callback);
-    this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(2).on('child_changed', callback);
+    this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(12).on('child_added', callback);
+    this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(12).on('child_changed', callback);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

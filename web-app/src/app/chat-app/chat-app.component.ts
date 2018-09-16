@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy  } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -13,12 +13,13 @@ import { filter } from 'rxjs/operators';
   templateUrl: './chat-app.component.html',
   styleUrls: ['./chat-app.component.css']
 })
-export class ChatAppComponent implements OnInit {
+export class ChatAppComponent implements OnInit, OnDestroy {
   user: UserDetails;
   messages: UserDetails[] = [];
   messagesTest: Observable<any[]>;
   @ViewChild('f') form: NgForm;
   classroom: string;
+  subscription;
 
   constructor(private chatAppService: ChatAppService,
               private ref: ChangeDetectorRef,
@@ -30,7 +31,7 @@ export class ChatAppComponent implements OnInit {
   ngOnInit() {
     this.user = new UserDetails('COMP 1405', '1', new Date(), 'Welcome');
 
-    this.route.queryParams.pipe(
+    this.subscription = this.route.queryParams.pipe(
       filter(params => params.room)
     )
     .subscribe(params => {
@@ -65,4 +66,9 @@ export class ChatAppComponent implements OnInit {
     this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(12).on('child_added', callback);
     this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(12).on('child_changed', callback);
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }
