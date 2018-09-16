@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy  } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy, AfterViewChecked  } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -13,7 +13,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './chat-app.component.html',
   styleUrls: ['./chat-app.component.css']
 })
-export class ChatAppComponent implements OnInit, OnDestroy {
+export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
   user: UserDetails;
   messages: UserDetails[] = [];
   messagesTest: Observable<any[]>;
@@ -41,6 +41,10 @@ export class ChatAppComponent implements OnInit, OnDestroy {
 
 
     this.loadMessages();
+  }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
   }
 
   onSendMessage() {
@@ -71,4 +75,11 @@ export class ChatAppComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  scrollToBottom() {
+    setTimeout(() => {
+      const messageList = document.getElementById('chat-messages');
+      messageList.scrollTop = messageList.scrollHeight;
+      document.getElementById('chat-messages').focus();
+    }, 1000);
+  }
 }
