@@ -22,16 +22,23 @@
         <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
           <a class="signip banner-right" [routerLink]="'/signin'">Sign In</a>
         </li>
+
+        <li routerLinkActive="active">
+            <div *ngIf="isUserLoggedIn()">
+              <img class="user banner-right" [routerLink]="'/user'" style="opacity: 10%; padding: 10px" src="https://imgur.com/download/FP4TAub">
+            </div>
+          </li>
+
+
         <li routerLinkActive="active" *ngIf="isUserLoggedIn()">
           <a class="signip banner-right" (click)="onLogoff()">Logoff</a>
         </li>
 
-        <li routerLinkActive="active">
-          <img class="user banner-right" [routerLink]="'/user'" style="opacity: 10%; padding: 10px" src="https://imgur.com/download/FP4TAub">
-        </li>
+
+
 
         <li class="dropdown" appDropdown>
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Help <span class="caret"></span></a>
           <ul class="dropdown-menu">
 
             <li routerLinkActive="active">
@@ -42,6 +49,10 @@
             </li>
           </ul>
         </li>
+
+
+
+
 
     </ul>
   </div>

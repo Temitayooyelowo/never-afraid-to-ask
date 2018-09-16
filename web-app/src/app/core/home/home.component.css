@@ -10,6 +10,16 @@ h1 {
   padding-left: 100px;
 }
 
+label.select-class-label.input-group-text {
+  color: rgba(57, 87, 148, 0.733);
+}
+
+.form-group {
+  text-align: left;
+  font-size: 20px;
+  padding-left: 100px;
+}
+
 .div {
   overflow:hidden;
 }
@@ -29,4 +39,11 @@ h1 {
   text-align: left;
   font-size: 16px;
   padding-left: 18px;
+}
+
+.btn{
+  background-color: rgba(0, 51, 153, 0.733);
+  text-align: left;
+  border-radius: 30px;
+  margin-left: 8%;
 }

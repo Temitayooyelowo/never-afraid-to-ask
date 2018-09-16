@@ -21,5 +21,18 @@ img{
   height: 50px;
 }
 
+.container-fluid {
+  background-color: white;
+  padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   z-index: 20;
+}
+
 
 

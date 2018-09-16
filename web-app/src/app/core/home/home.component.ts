@@ -18,4 +18,12 @@ export class HomeComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
+  // isStudent() {
+
+  // }
+
+  // isProfessor() {
+
+  // }
+
 }
