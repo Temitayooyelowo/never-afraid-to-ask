@@ -1,0 +1,45 @@
+* {
+  background-color: #eee;
+  color: black;
+}
+
+.classroom-title{
+  text-align: center;
+  color: rgb(0,51,153);
+  margin-top: 2vh;
+  font-size: 30px;
+}
+
+.messages {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.message_body {
+  padding-top: 2vh;
+}
+
+.footer form {
+  background: rgba(109, 88, 157, 0.90);
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  padding: 10px;
+  height: 50px;
+  flex-grow: 1;
+  margin-right: 10px;
+  color: rgb(189,189,189);
+}
+
+.footer input {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.footer button {
+  border: none;
+  border-radius: 4px;
+  color: white;
+  flex-grow: 0.1;
+  margin-left: 10px;
+}

@@ -1,3 +1,10 @@
 <div>
     <img class="homeback" src="https://imgur.com/download/EvcLsaR">
+
+    <!-- Change the text if the user logged in -->
+    <div *ngIf="isUserLoggedIn()">
+      <button type="button" routerLink="/chat-app">Logged In</button>
+    </div>
 </div>
+
+
