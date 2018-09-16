@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private String mPhotoUrl;
     private String mPostKey;
 
+    private String selectedCourse;
+
     private DatabaseReference mDatabase;
 
     public static final String ANONYMOUS = "anonymous";
@@ -59,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            selectedCourse = b.getString("courseCode");
+        }
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
@@ -92,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mQuestionField.getText().toString().trim().length() != 0) {
-                    writeToDatabase(mQuestionField.getText().toString(), "TestCourse", mFirebaseUser.getUid());
+                    writeToDatabase(mQuestionField.getText().toString(), selectedCourse, mFirebaseUser.getUid());
                     mQuestionField.setText("");
                 }
                 scrollView.postDelayed(new Runnable() {
@@ -115,21 +122,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mDatabase.child("messages").addValueEventListener(new ValueEventListener() {
+        mDatabase.child(selectedCourse).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 ArrayList<String> contents = new ArrayList<>();
                 for(DataSnapshot child: dataSnapshot.getChildren()) {
-                    String content = child.child("content").getValue(String.class);
-                    TextView textView = new TextView(getApplicationContext());
-                    textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
-                    textView.setText(content);
-                    chatLayout.addView(textView);
+                    contents.add(child.child("content").getValue(String.class));
                 }
-                // MessageDTO value = dataSnapshot.getValue(MessageDTO.class);
-                System.out.println("Hello WOrld");
+                TextView textView = new TextView(getApplicationContext());
+                textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
+                if (contents.size() > 0) {
+                    textView.setText(contents.get(contents.size() - 1));
+                } else {
+                    textView.setText("");
+                }
+                chatLayout.addView(textView);
             }
 
             @Override
@@ -141,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void writeToDatabase(String content, String courseCode, String userId) {
         MessageDTO msg = new MessageDTO(content, courseCode, userId);
-        mDatabase.child("messages").push().setValue(msg);
+        mDatabase.child(selectedCourse).push().setValue(msg);
     }
 
 }
