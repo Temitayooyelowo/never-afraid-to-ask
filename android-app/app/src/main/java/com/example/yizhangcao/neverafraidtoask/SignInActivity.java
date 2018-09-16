@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
                                         updateUI(user);
                                         finish();
                                     } else {
-                                        Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                        Toast.makeText(getApplicationContext(), "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -64,8 +64,8 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private boolean checkLoginInfo (EditText email, EditText password) {
-        if (mEmailEditText.getText().toString().trim().length() == 0 ||
-                mPassEditText.getText().toString().trim().length() == 0) {
+        if (email.getText().toString().trim().length() == 0 ||
+                password.getText().toString().trim().length() == 0) {
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUI (FirebaseUser user) {
         if (user != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), CourseSelectionActivity.class));
         }
     }
 
