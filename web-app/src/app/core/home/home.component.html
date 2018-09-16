@@ -1,25 +1,72 @@
-<div>
-    <img class="homeback" src="https://imgur.com/download/EvcLsaR">
-
-    <!-- Change the text if the user logged in -->
-    <div *ngIf="isUserLoggedIn()">
-      <button type="button" routerLink="/chat-app">Logged In</button>
-    </div>
-</div>
 
 
 <div class="row background">
 
 <div>&#160;</div>
 <div>&#160;</div>
-<div>&#160;</div><div>&#160;</div>
+<div>&#160;</div><div>&#160;</div><div>&#160;</div>
 
 <h1>Welcome!</h1>
+
+
+<div>
+    <!-- Change the text if the user logged in -->
+    <div *ngIf="isUserLoggedIn()">
+        <!--Student-->
+          <!-- <div *ngIf="isUserLoggedIn()"> -->
+            <div>&#160;</div>
+            <div>&#160;</div>
+              <div class="input-group form-group">
+                  <label class="select-class-label input-group-text" for="class-select">Available Classes</label>
+                  <select class="class-select form-control" id="role-select">
+                    <option selected>Pick a class</option>
+                  </select>
+              </div>
+              <div>&#160;</div>
+              <div>&#160;</div>
+                <div class="row">
+                      <button class="btn btn-primary" type="button" routerLink="/chat-app">Enter Class</button>
+                </div>
+          <!-- </div> -->
+
+        <!--Professor-->
+        <!-- <div *ngIf="isUserLoggedIn()">
+            <div class="form-class">
+                <form [formGroup]= "professor-class" (ngSubmit)="onSubmit()">
+
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="form-group">
+                            <input
+                              type="text"
+                              name="course-code"
+                              placeholder="Course Code"
+                              formControlName='course-code'
+                            />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <button class="start-course" style="padding-left: 80%">Start Class</button>
+                        </div>
+                      </div>
+                  </form>
+
+            </div>
+        </div> -->
+    </div>
+
+</div>
+
+
+
 <div>&#160;</div><div>&#160;</div><div>&#160;</div>
 
 <div></div>
 
-<div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div>
+<div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div><div>&#160;</div>
 
     <div>
         <p class="footerHeart">Made with &hearts; from TheHiddenTent 2018</p>

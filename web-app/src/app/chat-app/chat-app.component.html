@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-xs-12">
-    <p class="classroom-title">{{ user.courseCode }}</p>
+  <!-- <div class=""> -->
+    <h1 class="classroom-title">{{ user.courseCode }}</h1>
 
     <!-- <div class="messages">
       <ul class="chat-messages" *ngFor="let message of messages">
@@ -12,8 +12,8 @@
       </ul>
     </div> -->
 
-    <div class="row messages">
-        <div class="col-xs-12 chat-messages">
+    <!-- <div class="row messages">
+        <div class="chat-messages">
           <div *ngFor="let message of messages">
 
              <p> {{ message.userId }} </p>
@@ -23,7 +23,20 @@
 
         </div>
       </div>
+    </div> -->
+
+
+
+    <div class="chat-messages">
+        <div *ngFor="let message of messages">
+           <p class= "text-box">
+             {{ message.content }}
+             <!-- {{ message.courseCode }} -->
+             <!-- {{ message.timeStamp }} -->
+            </p>
+      </div>
     </div>
+
 
     <div class="footer">
       <form (ngSubmit)="onSendMessage()" #f="ngForm">
@@ -32,5 +45,5 @@
       </form>
     </div>
 
-  </div>
+  <!-- </div> -->
 </div>

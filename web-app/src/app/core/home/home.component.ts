@@ -22,5 +22,12 @@ export class HomeComponent implements OnInit {
   onSetupCourse() {
 
   }
+  // isStudent() {
+
+  // }
+
+  // isProfessor() {
+
+  // }
 
 }

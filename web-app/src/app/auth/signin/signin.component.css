@@ -1,6 +1,9 @@
 .left-div {
   background-color: rgba(255, 255, 255, 0.79);
-  height: 100vh;
+  background-image: url("https://imgur.com/download/EvcLsaR");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 h1 {
@@ -36,8 +39,10 @@ h1 {
 .submit{
   background-color: rgba(170,198,206, .79);
   text-align: right;
-  border-radius: 8px;
+  font-size: 17px;
+  border-radius: 30px;
 }
+
 
 input {
   padding:4px;

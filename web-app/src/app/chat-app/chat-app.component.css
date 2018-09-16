@@ -1,26 +1,49 @@
-* {
-  background-color: #eee;
+/* * {
+  background-color: rgba(109, 88, 157, 0.90);
   color: black;
-}
+} */
 
 .classroom-title{
   text-align: center;
-  color: rgb(0,51,153);
+  color: white;
   margin-top: 2vh;
   font-size: 30px;
+  background-color:  rgb(0,51,153);
+  height: 50px;
+  text-align: center;
+}
+
+.text-box {
+  font-size: 24px;
 }
 
 .messages {
-  height: 80vh;
+  /* background-color: rgba(109, 88, 157, 0.90); */
+  height: 75vh;
   overflow-y: auto;
 }
 
 .message_body {
-  padding-top: 2vh;
+  padding: 20px;
+  height: 30%;
+  /* background-color: red; */
+  box-shadow: 20px;
+  word-wrap: break-word;
+}
+
+.footer {
+  width: 99%;
+  height: 80px;
+  background-color: rgb(0,51,153);
+
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
 }
 
 .footer form {
-  background: rgba(109, 88, 157, 0.90);
+  /* background: rgba(109, 88, 157, 0.90); */
   border: none;
   border-radius: 4px;
   display: flex;
@@ -28,18 +51,47 @@
   height: 50px;
   flex-grow: 1;
   margin-right: 10px;
-  color: rgb(189,189,189);
 }
 
 .footer input {
-  padding: 10px;
+  padding: 25px;
+  /* background-color: white; */
   flex-grow: 1;
+  /* margin-top: -20px; */
+  height: 35px;;
 }
 
-.footer button {
+.chat-messages {
+  background-image: url("https://imgur.com/download/EvcLsaR");
+
+  border: 5px solid white;
+  padding: 20px;
+
+  height: 76vh;
+  width: 95%;
+
+  overflow: scroll;
+
+  margin-left: 25px;
+
+  margin-bottom: 30px;
+
+  color:  rgb(0,51,153);;
+}
+
+
+
+.btn {
   border: none;
   border-radius: 4px;
-  color: white;
+  color:  rgb(0,51,153);
+  background-color: white;
   flex-grow: 0.1;
+  font-size: 19px;
+
   margin-left: 10px;
+  margin-top: 5px;
+
+  width: 105px;
+  height: 39px;;
 }
