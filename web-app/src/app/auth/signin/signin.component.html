@@ -1,6 +1,12 @@
 <div class="row">
   <div class="col-xs-8 col-md-8 col-lg-8 left-div">
 
+      <h1> Never Afraid To Ask</h1>
+
+      <div>
+          <p class="footerHeart">Made with &hearts; from TheHiddenTent 2018</p>
+      </div>
+
   </div>
   <div class="col-xs-4 col-md-4 col-lg-4 right-div">
 
@@ -45,15 +51,15 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12">
-                <button class="btn btn-primary">Submit</button>
+            <div class="col-xs-1">
+                <button class="submit" style="padding-left: 80%">Submit</button>
             </div>
           </div>
       </form>
 
       <div class="row sign-up">
         <div class="col-xs-12">
-          <p>Do not have an account? Sign up now!</p>
+          <p [routerLink]="'/signup'">Do not have an account? Sign up now!</p>
           <p>Forgot password?</p>
         </div>
       </div>
