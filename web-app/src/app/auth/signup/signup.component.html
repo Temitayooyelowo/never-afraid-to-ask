@@ -1,34 +1,103 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
-    <div class="row">
-     <div class="col-xs-12">
-       <div class="form-group">
-           <label for="email">E-Mail</label>
-           <input
-             type="email"
-             name="email"
-             formControlName='email'
-             class="form-control"
-           />
+<!-- <div>
+    <img class="home-back-g" src="https://imgur.com/download/EvcLsaR">
+</div> -->
+
+<div class="form-class">
+
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+        <div class="row">
+         <!-- <div class="col-xs-12"> -->
+            <label for="email" class="text-label col-xs-2 col-md-2 col-lg-2">Email</label>
+            <div class="col-xs-10 col-md-10 col-lg-10">
+           <div class="form-group">
+               <!-- <label for="email">E-Mail</label> -->
+               <input
+
+                 type="email"
+                 name="email"
+                 formControlName='email'
+                 class="form-control transparent-input"
+               />
+           </div>
+          </div>
        </div>
+
+
+        <div class="row">
+            <label for="password" class="text-label col-xs-2 col-md-2 col-lg-2">Password</label>
+         <div class="col-xs-10 col-md-10 col-lg-10">
+
+           <div class="form-group">
+             <!-- <label for="password">Password</label> -->
+             <input
+               type="password"
+               name="password"
+               formControlName="password"
+               class="form-control transparent-input"
+             />
+           </div>
+          </div>
+       </div>
+
+
+
+       <!-- <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="role">Role</label>
+            <input
+
+              type="text"
+              name="role"
+              formControlName="role"
+              class="form-control transparent-input"
+            />
+          </div>
+        </div>
+      </div> -->
+
+      <div class="row">
+          <label for="school" class="text-label col-xs-2 col-md-2 col-lg-2">School</label>
+          <div class="col-xs-10 col-md-10 col-lg-10">
+        <!-- <div class="col-xs-12"> -->
+          <div class="form-group">
+            <!-- <label for="school">School</label> -->
+            <input
+              type="text"
+              name="school"
+              formControlName="school"
+              class="form-control transparent-input"
+            />
+          </div>
+        </div>
       </div>
-   </div>
+
+
+
+      <div class="input-group form-group">
+          <!-- <label for="role-select" class="col-lg-1">Name:</label> -->
+
+
+          <div class="input-group-prepend form-group">
+          </div>
+          <label class="text-label input-group-text" for="role-select">Role</label>
+          <select class="role-select form-control col-xs-10 col-md-10 col-lg-10" id="role-select">
+            <option selected>Choose a Role</option>
+            <option value="student">Student</option>
+            <option value="professor">Professor</option>
+          </select>
+        </div>
+
 
     <div class="row">
-     <div class="col-xs-12">
-       <div class="form-group">
-         <label for="password">Password</label>
-         <input
-           type="password"
-           name="password"
-           formControlName="password"
-           class="form-control"
-         />
-       </div>
-      </div>
-   </div>
-    <div class="row">
-       <div class="col-xs-12">
+       <!-- <div class="b col-xs-10 col-md-10 col-lg-10"> -->
            <button class="btn btn-primary">Sign Up</button>
-       </div>
+       <!-- </div> -->
      </div>
- </form>
+  </form>
+
+
+</div>
+
+

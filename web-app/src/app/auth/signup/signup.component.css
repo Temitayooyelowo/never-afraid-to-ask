@@ -1,0 +1,79 @@
+/* .background {
+  z-index: 1;
+  position: relative;
+} */
+
+
+/* input[type="email"] {
+  padding:4px;
+  margin-bottom: 30px;
+  opacity: 0.6;
+  border:none;
+  border-bottom:1px solid rgba(48, 82, 95, 0.3);
+  width:100%
+} */
+
+.text-label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgb(54, 83, 156);
+  font-style: normal;
+}
+
+input {
+  /* opacity: 0.1; */
+  padding-left:4px;
+  padding-right: 4px;
+  margin-bottom: 30px;
+  border:none;
+  border-bottom:1px solid rgb(54, 83, 156);
+  width: 40%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(54, 83, 156);
+}
+
+.form-class {
+  background-image: url("https://imgur.com/download/EvcLsaR");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-left: 10%;
+  padding-top: 10%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  transform: translateX(90%);
+  margin-right: 20em;
+  border-radius: 30px;
+
+}
+
+select {
+  margin-left: 13em;
+  margin-bottom: 7vh;
+  width: 40%;
+}
+
+/* .input-group-text {
+  margin-top: 2em;
+} */
+/*
+.home-back-g {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+input {
+  padding:4px;
+  margin-bottom: 30px;
+  border:none;
+  border-bottom:1px solid rgb(189,189,189);
+  background-color: white;
+  width:100%
+}
+
+input:focus {
+  outline: none;
+} */
