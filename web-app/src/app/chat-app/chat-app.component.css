@@ -8,13 +8,17 @@
   color: white;
   margin-top: 2vh;
   font-size: 30px;
-  background-color:  rgb(0,51,153);
+  background-color:  rgba(0, 58, 173, 0.589);
   height: 50px;
   text-align: center;
+  padding-top: 7px;
 }
 
 .text-box {
   font-size: 24px;
+
+  border-style: solid;
+  border-width: 5px;
 }
 
 .messages {
@@ -34,7 +38,7 @@
 .footer {
   width: 99%;
   height: 80px;
-  background-color: rgb(0,51,153);
+  background-color: rgba(0, 58, 173, 0.589);
 
   position: fixed;
    left: 0;
@@ -76,7 +80,7 @@
 
   margin-bottom: 30px;
 
-  color:  rgb(0,51,153);;
+  color:  rgba(0, 58, 173, 0.589);
 }
 
 
