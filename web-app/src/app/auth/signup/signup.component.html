@@ -76,19 +76,21 @@
 
 
 
-      <div class="input-group form-group">
-          <!-- <label for="role-select" class="col-lg-1">Name:</label> -->
-
-
-          <div class="input-group-prepend form-group">
-          </div>
-          <label class="text-label input-group-text" for="role-select">Role</label>
-          <select class="role-select form-control col-xs-10 col-md-10 col-lg-10" id="role-select">
-            <!-- <option selected>Choose a Role</option> -->
-            <option selected value="student">Student</option>
-            <option value="professor">Professor</option>
-          </select>
-        </div>
+      <div class="input-group form-group" formArrayName="role">
+          <div
+              class="row"
+              *ngFor="let signupCtrl of getControls(); let i = index"
+              [formGroupName]="i"
+              style="margin-top: 10px;"
+              >
+               <label class="text-label input-group-text" for="role-select">Role</label>
+              <select class="role-select form-control col-xs-10 col-md-10 col-lg-10" id="role-select" formControlName="index">
+                <option selected>Choose a Role</option>
+                <option value="student">Student</option>
+                <option value="professor">Professor</option>
+              </select>
+           </div>
+      </div>
 
 
       <div class="row">

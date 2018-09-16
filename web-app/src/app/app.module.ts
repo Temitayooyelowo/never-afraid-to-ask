@@ -12,6 +12,7 @@ import { CollectiveModule } from './collective/collective.module';
 import { ChatAppComponent } from './chat-app/chat-app.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { HowToComponent } from './howto/howto.component';
+import { ClassroomComponent } from './classroom/classroom.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HowToComponent } from './howto/howto.component';
     ChatAppComponent,
     AboutUsComponent,
     QuestionsComponent,
-    HowToComponent
+    HowToComponent,
+    ClassroomComponent
   ],
   imports: [
     BrowserModule,

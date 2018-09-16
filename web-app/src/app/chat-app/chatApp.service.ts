@@ -15,7 +15,7 @@ export class ChatAppService {
   constructor(private firebaseDatabase: AngularFireDatabase) { }
 
   sendMessage(user: UserDetails) {
-    this.firebaseDatabase.database.ref('/messages').push(
+    this.firebaseDatabase.database.ref(`/${user.courseCode}/`).push(
       new UserDetails(user.courseCode, user.userId, user.timeStamp, user.content)
     ).then(
       () => {
@@ -24,30 +24,5 @@ export class ChatAppService {
       }
     );
   }
-
-  // loadMessages() {
-  //   this.firebaseDatabase.database.ref('/messages').limitToLast(10).on('child_added', snap => {
-  //     const data = snap.val();
-  //     this.messages.push({
-  //       content: data.content,
-  //       courseCode: data.courseCode,
-  //       timeStamp: data.timeStemp,
-  //       userId: data.userId
-  //     });
-  //     this.messagesChanged.next(this.messages);
-  //   });
-
-  //   this.firebaseDatabase.database.ref('/messages').limitToLast(12).on('child_changed', snap => {
-  //     const data = snap.val();
-  //     this.messages.push({
-  //       content: data.content,
-  //       courseCode: data.courseCode,
-  //       timeStamp: data.timeStemp,
-  //       userId: data.userId
-  //     });
-
-  //     this.messagesChanged.next(this.messages);
-  //   });
-  // }
 
 }

@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
       'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
       'role': new FormArray([
         new FormGroup({
-          'index': new FormControl('student', Validators.required)
+          'index': new FormControl('', Validators.required)
         }),
       ]),
       'school': new FormControl('', Validators.required)
@@ -51,7 +51,6 @@ export class SignupComponent implements OnInit {
     const role = this.signUpForm.value.role;
     const school = this.signUpForm.value.school;
 
-    console.log(this.signUpForm);
     this.authService.signupUserWithEmail(email, password, role, school);
   }
 

@@ -46,7 +46,19 @@ export class HomeComponent implements OnInit {
   }
 
   onChooseRoom() {
-    console.log(this.studentForm.value.course);
+    const course = this.studentForm.value.course;
+
+    const role = this.authService.role;
+
+    if (!course || !role) {
+      return;
+    }
+
+    if (role === 'student') {
+      this.router.navigate(['/chat-app'], { queryParams: { room: course } });
+    } else {
+      this.router.navigate(['/classroom'], {queryParams: { room: course}});
+    }
     // this.router.navigate(['/chat-app']);
   }
 
