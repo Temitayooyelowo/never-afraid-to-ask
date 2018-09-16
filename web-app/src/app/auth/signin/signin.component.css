@@ -39,6 +39,7 @@ h1 {
 .submit{
   background-color: rgba(170,198,206, .79);
   text-align: right;
+  font-size: 17px;
   border-radius: 30px;
 }
 
