@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy, AfterViewChecked  } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, AfterViewChecked  } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
-
-import { UserDetails } from './userDetails.model';
-import { ChatAppService } from './chatApp.service';
 import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
+
+import { UserDetails } from './userDetails.model';
+import { MessagesService } from './messages.service';
 
 @Component({
   selector: 'app-chat-app',
@@ -19,28 +19,32 @@ export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
   messagesTest: Observable<any[]>;
   @ViewChild('f') form: NgForm;
   classroom: string;
-  subscription;
+  routeSubscription;
+  messageChangedSubscription;
 
-  constructor(private chatAppService: ChatAppService,
-              private ref: ChangeDetectorRef,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
+              private messagesService: MessagesService,
               private firebaseDatabase: AngularFireDatabase) {
 
     }
 
   ngOnInit() {
-    this.user = new UserDetails('COMP 1405', '1', new Date(), 'Welcome');
+    this.user = new UserDetails('', '', new Date(), '');
 
-    this.subscription = this.route.queryParams.pipe(
-      filter(params => params.room)
-    )
-    .subscribe(params => {
-      this.classroom = params.room;
-      console.log(this.classroom);
-    });
+    this.routeSubscription = this.route.queryParams.pipe(
+      filter(params => params.room))
+      .subscribe(params => {
+        this.classroom = params.room;
+        this.messagesService.loadMessages(this.classroom);
+      });
 
-
-    this.loadMessages();
+    this.messageChangedSubscription = this.messagesService.messagesChanged
+      .subscribe(
+        (messages: UserDetails[]) => {
+          this.messages = messages;
+        }
+      );
+    this.messages = this.messagesService.getMessages();
   }
 
   ngAfterViewChecked(): void {
@@ -51,28 +55,18 @@ export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
     const message = this.form.value.message;
     this.user.content = message;
     this.user.courseCode = this.classroom;
-    this.chatAppService.sendMessage(this.user);
+
+    this.messagesService.sendMessage(this.user);
     this.form.reset({});
   }
 
-  loadMessages() {
-    const callback = (snap) => {
-      const data = snap.val();
-      this.messages.push({
-        content: data.content,
-        courseCode: data.courseCode,
-        timeStamp: data.timeStamp,
-        userId: data.userId
-      });
-      this.ref.detectChanges();
-    };
-
-    this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(12).on('child_added', callback);
-    this.firebaseDatabase.database.ref(`/${this.classroom}/`).limitToLast(12).on('child_changed', callback);
-  }
+  // loadMessages() {
+  //   this.messagesService.loadMessages(this.classroom);
+  // }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
+    this.messageChangedSubscription.unsubscribe();
   }
 
   scrollToBottom() {
