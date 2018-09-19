@@ -1,4 +1,4 @@
-export class UserDetails {
+export class MessagesModel {
   courseCode: string;
   userId: string;
   timeStamp: Date;

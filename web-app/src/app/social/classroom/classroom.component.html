@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div *ngIf="!!currentMessage">
+        <p> Current Message: {{ currentMessage.content }} </p>
+        <p *ngIf="!!previousMessage"> Previous Message: {{ previousMessage.content }} </p>
+    </div>
+  </div>
+</div>

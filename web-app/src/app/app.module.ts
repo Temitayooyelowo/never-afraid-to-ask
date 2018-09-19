@@ -7,28 +7,24 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { WildCardRoutingModule } from './core/page-not-found/wildcard-routing.module';
 import { UserComponent } from './user/user.component';
-import { AboutUsComponent } from './aboutus/aboutus.component';
+import { AboutUsComponent } from './help/aboutus/aboutus.component';
 import { CollectiveModule } from './collective/collective.module';
-import { ChatAppComponent } from './chat-app/chat-app.component';
-import { QuestionsComponent } from './questions/questions.component';
-import { HowToComponent } from './howto/howto.component';
-import { ClassroomComponent } from './classroom/classroom.component';
+import { HowToComponent } from './help/howto/howto.component';
+import { SocialModule } from './social/social.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    ChatAppComponent,
     AboutUsComponent,
-    QuestionsComponent,
-    HowToComponent,
-    ClassroomComponent
+    HowToComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
     CollectiveModule,
     AuthModule,
+    SocialModule,
     FormsModule,
     WildCardRoutingModule /** Has to be in the last position */
   ],

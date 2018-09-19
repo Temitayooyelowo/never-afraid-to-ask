@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild, OnDestroy, AfterViewChecked  } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable, Subject } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-import { UserDetails } from './userDetails.model';
-import { MessagesService } from './messages.service';
+import { MessagesModel } from '../messages.model';
+import { MessagesService } from '../messages.service';
 
 @Component({
   selector: 'app-chat-app',
@@ -14,22 +13,19 @@ import { MessagesService } from './messages.service';
   styleUrls: ['./chat-app.component.css']
 })
 export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
-  user: UserDetails;
-  messages: UserDetails[] = [];
+  user: MessagesModel;
+  messages: MessagesModel[] = [];
   messagesTest: Observable<any[]>;
   @ViewChild('f') form: NgForm;
   classroom: string;
-  routeSubscription;
-  messageChangedSubscription;
+  routeSubscription: Subscription;
+  messageChangedSubscription: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private messagesService: MessagesService,
-              private firebaseDatabase: AngularFireDatabase) {
-
-    }
+              private messagesService: MessagesService) { }
 
   ngOnInit() {
-    this.user = new UserDetails('', '', new Date(), '');
+    this.user = new MessagesModel('', '', new Date(), '');
 
     this.routeSubscription = this.route.queryParams.pipe(
       filter(params => params.room))
@@ -40,7 +36,7 @@ export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     this.messageChangedSubscription = this.messagesService.messagesChanged
       .subscribe(
-        (messages: UserDetails[]) => {
+        (messages: MessagesModel[]) => {
           this.messages = messages;
         }
       );
@@ -60,10 +56,6 @@ export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.form.reset({});
   }
 
-  // loadMessages() {
-  //   this.messagesService.loadMessages(this.classroom);
-  // }
-
   ngOnDestroy() {
     this.routeSubscription.unsubscribe();
     this.messageChangedSubscription.unsubscribe();
@@ -72,8 +64,10 @@ export class ChatAppComponent implements OnInit, OnDestroy, AfterViewChecked {
   scrollToBottom() {
     setTimeout(() => {
       const messageList = document.getElementById('chat-messages');
-      messageList.scrollTop = messageList.scrollHeight;
-      document.getElementById('chat-messages').focus();
+      if (!!messageList)  {
+        messageList.scrollTop = messageList.scrollHeight;
+        document.getElementById('chat-messages').focus();
+      }
     }, 1000);
   }
 }

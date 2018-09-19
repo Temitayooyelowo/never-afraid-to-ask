@@ -22,7 +22,8 @@
 
                         <form
                           (ngSubmit)="onChooseRoom()"
-                          *ngIf="authService.role === 'student' || authService.role === 'professor'" #studentForm="ngForm">
+                          *ngIf="(authService.role === 'student' || authService.role === 'professor')"
+                           #studentForm="ngForm">
                           <label class="select-class-label input-group-text" for="class-select">Available Classes</label>
                           <select
                             class="class-select form-control"

@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './core/home/home.component';
 import { UserComponent } from './user/user.component';
-import { ChatAppComponent } from './chat-app/chat-app.component';
-import { AboutUsComponent } from './aboutus/aboutus.component';
-import { HowToComponent } from './howto/howto.component';
-import { ClassroomComponent } from './classroom/classroom.component';
+import { ChatAppComponent } from './social/chat-app/chat-app.component';
+import { AboutUsComponent } from './help/aboutus/aboutus.component';
+import { HowToComponent } from './help/howto/howto.component';
+import { ClassroomComponent } from './social/classroom/classroom.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},

@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
               private firebaseDatabase: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.getAvailableCourses();
+    if (!!this.isUserLoggedIn()) {
+      this.getAvailableCourses();
+    }
   }
 
   isUserLoggedIn() {

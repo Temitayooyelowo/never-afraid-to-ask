@@ -2,20 +2,20 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 
-import { UserDetails } from './userDetails.model';
+import { MessagesModel } from './messages.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagesService {
 
-  messagesChanged = new Subject<UserDetails[]>();
-  private messages: UserDetails[] = [];
+  messagesChanged = new Subject<MessagesModel[]>();
+  private messages: MessagesModel[] = [];
 
   constructor(private firebaseDatabase: AngularFireDatabase) { }
 
-  sendMessage(user: UserDetails) {
-    const message: UserDetails = new UserDetails(user.courseCode, user.userId, user.timeStamp, user.content);
+  sendMessage(user: MessagesModel) {
+    const message: MessagesModel = new MessagesModel(user.courseCode, user.userId, user.timeStamp, user.content);
 
     this.firebaseDatabase.database.ref(`/${user.courseCode}/`).push(message).then(
       () => {
@@ -43,6 +43,14 @@ export class MessagesService {
 
   getMessages() {
     return this.messages.slice(); /** Returns copy of messages array */
+  }
+
+  getMessagesLength() {
+    return this.messages.length;
+  }
+
+  getMessage(index: number) {
+    return this.messages[index];
   }
 
 }
