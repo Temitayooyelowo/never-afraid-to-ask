@@ -1,33 +1,19 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 import { User } from './user.model';
-import { UserService } from './user.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit, OnDestroy {
+export class UserComponent implements OnInit {
   user: User;
-  userSubscription: Subscription;
 
-  constructor(private userService: UserService,
-              private cdRef: ChangeDetectorRef) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.userService.getUserInfo();
-    this.userSubscription = this.userService.userData.subscribe(
-      (user) => {
-        this.user = user;
-        console.log(this.user);
-        this.cdRef.detectChanges();
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    this.user = this.authService.user;
   }
 }
