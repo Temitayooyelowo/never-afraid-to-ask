@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Subscription } from 'rxjs';
 
+import { UserService } from '../core/user/user.service';
 
 export class UserInfo {
     email: string;
@@ -38,41 +40,30 @@ export class CoursesTaken {
   providedIn: 'root'
 })
 
-export class AuthService {
+export class AuthService implements OnInit, OnDestroy {
   token: string;
   STUDENT = 'student';
   INSTRUCTOR = 'instructor';
   ADMIN = 'admin';
   role: string;
+  userSubscription: Subscription;
 
   constructor(private firebaseAuth: AngularFireAuth,
               private firebaseDatabase: AngularFireDatabase,
-              private router: Router) { }
+              private userService: UserService,
+              private router: Router) {
+              }
+
+  ngOnInit() {
+  }
 
   getUserInformation() {
-
-    const user = this.firebaseAuth.auth.currentUser;
-    if (!user) {
-      return;
-    }
-    const userEmail = user.email;
-
-    this.firebaseDatabase.database.ref().child('users').orderByChild('email').equalTo(userEmail)
-    .once('value').then((snapshot) => {
-      let data = snapshot.val();
-      console.log(data);
-
-      snapshot.forEach((data2) => {
-        const key = data2.key;
-        data = data[key];
-        if (!!data && !!data['roles']) {
-          this.role = data['roles'][0].index;
-        }
-      });
-
-      return data;
-    });
-    // return this.firebaseAuth.auth.currentUser;
+    this.userService.getUserInfo();
+    this.userSubscription = this.userService.userData.subscribe(
+      (user) => {
+        this.role = user.role;
+      }
+    );
   }
 
   signupUserWithEmail(
@@ -129,6 +120,10 @@ export class AuthService {
   isAuthenticated() {
     // this.token = !this.token ? this.firebaseAuth.auth.currentUser ? this.getToken() : this.token : this.token;
     return !!this.token;
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
   }
 
 }
