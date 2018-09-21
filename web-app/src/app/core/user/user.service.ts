@@ -5,7 +5,9 @@ import { User } from './user.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
   userData = new Subject<User>();
   constructor(private firebaseAuth: AngularFireAuth,
@@ -13,6 +15,7 @@ export class UserService {
     }
 
   getUserInfo() {
+    console.log('In get user');
     const user = this.firebaseAuth.auth.currentUser;
     if (!user) {
       return;

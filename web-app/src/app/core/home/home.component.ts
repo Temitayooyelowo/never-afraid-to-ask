@@ -57,9 +57,9 @@ export class HomeComponent implements OnInit {
     }
 
     if (role === 'student') {
-      this.router.navigate(['/chat-app'], { queryParams: { room: course } });
+      this.router.navigate(['/social/chat-app'], { queryParams: { room: course } });
     } else {
-      this.router.navigate(['/classroom'], {queryParams: { room: course}});
+      this.router.navigate(['/social/classroom'], {queryParams: { room: course}});
     }
     // this.router.navigate(['/chat-app']);
   }

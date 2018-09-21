@@ -5,6 +5,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Subscription } from 'rxjs';
 
 import { UserService } from '../core/user/user.service';
+import { User } from '../core/user/user.model';
 
 export class UserInfo {
     email: string;
@@ -46,6 +47,7 @@ export class AuthService implements OnInit, OnDestroy {
   INSTRUCTOR = 'instructor';
   ADMIN = 'admin';
   role: string;
+  user: User;
   userSubscription: Subscription;
 
   constructor(private firebaseAuth: AngularFireAuth,
@@ -61,6 +63,7 @@ export class AuthService implements OnInit, OnDestroy {
     this.userService.getUserInfo();
     this.userSubscription = this.userService.userData.subscribe(
       (user) => {
+        this.user = user;
         this.role = user.role;
       }
     );
