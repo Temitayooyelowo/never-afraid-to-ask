@@ -34,6 +34,10 @@ label.select-class-label.input-group-text {
 
 }
 
+.available-courses {
+  min-width: 300px;
+}
+
 .footerHeart{
   color: rgba(0, 51, 153, 0.733);
   text-align: left;

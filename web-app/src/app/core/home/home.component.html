@@ -22,28 +22,23 @@
 
                         <form
                           (ngSubmit)="onChooseRoom()"
+                          #studentForm="ngForm"
                           *ngIf="(authService.role === 'student' || authService.role === 'professor')"
-                           #studentForm="ngForm">
-                          <label class="select-class-label input-group-text" for="class-select">Available Classes</label>
-                          <select
-                            class="class-select form-control"
-                            name="course"
-                            ngModel
-                            required
-                            id="role-select"
-                            >
-                            <option selected>Please select a course</option>
-                            <ng-container *ngFor="let course of availableCourses">
-                                <option>{{ course }}</option>
-                            </ng-container>
-                          </select>
+                          >
+                            <mat-form-field class="available-courses">
+                              <mat-select name="course"
+                              id="course" ngModel required
+                              placeholder="Available Courses">
+                                <mat-option *ngFor="let course of availableCourses; " [value]="course">
+                                  {{ course }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
 
-                          <div class="row">
+                            <div class="row">
                               <button class="btn btn-primary" type="submit" >Enter Class</button>
                             </div>
                         </form>
-
-
                     </div>
                   </div>
 
@@ -53,12 +48,12 @@
                     <div class="col-xs-12">
 
                       <form class="form-group" (ngSubmit)="onCreateCourse()" *ngIf="authService.role === 'professor'" #f="ngForm">
-                        <label class="select-class-label input-group-text" for="course">Course Name</label>
-                        <input type="text"
-                                name="course"
-                                ngModel
-                                placeholder="Please enter your course"
-                                class="class-select form-control" required>
+
+                        <mat-form-field class="example-full-width">
+                          <input
+                            name="course" ngModel
+                            matInput placeholder="Course Name">
+                        </mat-form-field>
 
                         <div class="row">
                           <button class="btn btn-primary" type="submit"> Would you like to setup a course? </button>

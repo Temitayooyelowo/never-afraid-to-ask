@@ -9,6 +9,7 @@ import { GeneralModule } from '../general/general.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserComponent } from './user/user.component';
 import { CoreRoutingModule } from './core-routing.module';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CoreRoutingModule } from './core-routing.module';
   imports: [
     CommonModule,
     GeneralModule,
+    MaterialModule,
     FormsModule,
     CoreRoutingModule
   ],

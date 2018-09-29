@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
 
   onChooseRoom() {
     const course = this.studentForm.value.course;
+    console.log('Student form value --->', this.studentForm.value);
 
     const role = this.authService.role;
 
@@ -61,11 +62,6 @@ export class HomeComponent implements OnInit {
     } else {
       this.router.navigate(['/social/classroom'], {queryParams: { room: course}});
     }
-    // this.router.navigate(['/chat-app']);
   }
-
-  // isProfessor() {
-
-  // }
 
 }
