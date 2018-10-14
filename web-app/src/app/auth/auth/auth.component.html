@@ -1,0 +1,26 @@
+<div class="split left">
+  <div class="centered">
+    <img src="https://imgur.com/download/67YLOVY" alt="The Hidden Tent">
+    <h2>The Hidden Tent</h2>
+  </div>
+</div>
+
+<div class="split right flip-container">
+  <div class="flipper" [ngClass]="{'flipCard': status ==='signIn'}">
+    <div class="front" >
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 front-info">
+            <app-signup></app-signup>
+          </div>
+        </div>
+    </div>
+    <div class="back">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 back-info">
+            <app-signin></app-signin>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

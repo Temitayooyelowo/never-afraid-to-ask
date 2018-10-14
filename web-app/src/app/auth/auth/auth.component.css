@@ -1,0 +1,98 @@
+.split{
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: hsl(34,25%,97%);
+}
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: white;
+}
+
+/* Center the content horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+/** Make content adaptive **/
+@media (max-width: 600px) {
+  .left {
+    display: none;
+  }
+  .right, .front, .back {
+    width: 100% !important;
+  }
+}
+
+.flip-container {
+  perspective: 1000px;
+  background-color: white;
+}
+
+/** flip image whenever class is applied */
+.flipCard {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 50vw;
+  height: 100vh;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  z-index: 3;
+  transform: rotateY(0deg);
+  background-color: rgb(67, 127, 173) !important;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: rgb(86, 207, 181) !important;
+}
+
+.front-info, .back-info {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sign-up {
+  cursor: pointer;
+  font-size: 15px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 0;
+}
