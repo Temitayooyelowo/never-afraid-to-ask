@@ -17,11 +17,11 @@
       </form>
       -->
         <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
-          <a class="signup banner-right" [routerLink]="'/signup'">Sign Up</a>
+          <a class="signup banner-right" [routerLink]="'/auth'">Sign Up</a>
         </li>
-        <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
+        <!-- <li routerLinkActive="active" *ngIf="!isUserLoggedIn()">
           <a class="signip banner-right" [routerLink]="'/signin'">Sign In</a>
-        </li>
+        </li> -->
 
         <li routerLinkActive="active">
             <div *ngIf="isUserLoggedIn()">

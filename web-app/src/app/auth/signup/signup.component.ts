@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl, FormArray} from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormArray, FormGroupDirective, NgForm} from '@angular/forms';
 
 import { AuthService } from '../auth.service';
+import { ErrorStateMatcher } from '@angular/material';
 
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 export interface Role {
   value: string;
@@ -17,11 +25,14 @@ export interface Role {
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   chooseRoles = ['Student', 'Professor', 'Admin'];
+  status: string;
+  matcher: MyErrorStateMatcher;
 
 
   constructor(private authService: AuthService) { }
 
   private initForm() {
+    this.matcher = new MyErrorStateMatcher();
     const schoolsArray = new FormArray([]);
 
     this.signUpForm = new FormGroup({
@@ -38,10 +49,19 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.test();
   }
 
   getControls() {
     return (<FormArray>this.signUpForm.get('role')).controls;
+  }
+
+  toggleStatus() {
+    this.authService.toggleStatus();
+  }
+
+  test() {
+    console.log(this.signUpForm);
   }
 
 

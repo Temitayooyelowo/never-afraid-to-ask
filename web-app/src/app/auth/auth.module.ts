@@ -11,12 +11,15 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { environment } from '../../environments/environment';
+import { MaterialModule } from '../core/material.module';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AuthRoutingModule,
+    MaterialModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'never-afraid-to-ask'),
     AngularFirestoreModule,
@@ -26,7 +29,8 @@ import { environment } from '../../environments/environment';
   ],
   declarations: [
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    AuthComponent
   ]
 })
 export class AuthModule { }

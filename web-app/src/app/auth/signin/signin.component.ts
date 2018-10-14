@@ -33,4 +33,8 @@ export class SigninComponent implements OnInit {
     console.log('User role ---> ', this.authService.role);
   }
 
+  toggleStatus() {
+    this.authService.toggleStatus();
+  }
+
 }

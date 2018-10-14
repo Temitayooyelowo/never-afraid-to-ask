@@ -2,7 +2,7 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 
 import { UserService } from '../core/user/user.service';
 import { User } from '../core/user/user.model';
@@ -49,6 +49,8 @@ export class AuthService implements OnInit, OnDestroy {
   role: string;
   user: User;
   userSubscription: Subscription;
+  private authStatus = 'signUp';
+  authStatusSubscription = new Subject<string>();
 
   constructor(private firebaseAuth: AngularFireAuth,
               private firebaseDatabase: AngularFireDatabase,
@@ -57,6 +59,17 @@ export class AuthService implements OnInit, OnDestroy {
               }
 
   ngOnInit() {
+  }
+
+  toggleStatus() {
+    console.log('Old status is -->', this.authStatus);
+    if (this.authStatus === 'signUp' || !this.authStatus) {
+      this.authStatus = 'signIn';
+    } else {
+      this.authStatus = 'signUp';
+    }
+    console.log('New status is --> ', this.authStatus);
+    this.authStatusSubscription.next(this.authStatus);
   }
 
   getUserInformation() {

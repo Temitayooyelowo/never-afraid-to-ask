@@ -1,72 +1,44 @@
-<div class="row">
-  <div class="col-xs-8 col-md-8 col-lg-8 left-div">
+<div class="form-container">
+  <p class="sign-in">Sign in</p>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
 
-      <h1> Never Afraid To Ask</h1>
-
-      <div>
-          <p class="footerHeart">Made with &hearts; from TheHiddenTent 2018</p>
-      </div>
-
-  </div>
-  <div class="col-xs-4 col-md-4 col-lg-4 right-div">
-
-    <div class="form-container">
-      <p class="sign-in">Sign in</p>
-      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  formControlName='email'
-                />
-            </div>
-
-            <!-- <div *ngIf="signInForm.controls['email'].touched && !signInForm.controls['email'].valid">
-              <p class="alert alert-danger"><strong>Error!</strong> Please enter a valid email!</p>
-            </div> -->
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                formControlName="password"
-              />
-            </div>
-
-            <!-- <div *ngIf="signInForm.controls['password'].touched && !signInForm.controls['password'].valid">
-              <p class="alert alert-danger"><strong>Error!</strong> Please enter a valid password!</p>
-            </div> -->
-
-          </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-1">
-                <button class="submit" style="padding-left: 80%">Submit</button>
-            </div>
-          </div>
-      </form>
-
-      <div class="row sign-up">
-        <div class="col-xs-12">
-          <p [routerLink]="'/signup'">Do not have an account? Sign up now!</p>
-          <p>Forgot password?</p>
-        </div>
-      </div>
+    <div class="form-group">
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Email Address"
+          formControlName='email'
+        />
     </div>
 
+    <!-- <div *ngIf="signInForm.controls['email'].touched && !signInForm.controls['email'].valid">
+      <p class="alert alert-danger"><strong>Error!</strong> Please enter a valid email!</p>
+    </div> -->
 
-  </div>
+    <div class="form-group">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </div>
+
+    <!-- <div *ngIf="signInForm.controls['password'].touched && !signInForm.controls['password'].valid">
+      <p class="alert alert-danger"><strong>Error!</strong> Please enter a valid password!</p>
+    </div> -->
+
+    <div class="sign-up">
+      <p (click)="toggleStatus()">Do not have an account? Sign up now!</p>
+      <p>Forgot password?</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
 </div>
+
 
 

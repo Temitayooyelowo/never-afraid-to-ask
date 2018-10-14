@@ -1,116 +1,60 @@
-<!-- <div>
-<!-- <div>
-    <img class="home-back-g" src="https://imgur.com/download/EvcLsaR">
-</div> -->
+<h1>Sign Up</h1>
 
-<div class="form-class">
+<form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
 
-    <h1>Sign Up</h1>
-    <div>&#160;</div>
-    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
-        <div class="row">
-         <!-- <div class="col-xs-12"> -->
-            <label for="email" class="text-label col-xs-2 col-md-2 col-lg-2">Email</label>
-            <div class="col-xs-10 col-md-10 col-lg-10">
-           <div class="form-group">
-               <!-- <label for="email">E-Mail</label> -->
-               <input
-                 type="email"
-                 name="email"
-                 formControlName='email'
-                 class="form-control transparent-input"
-               />
-           </div>
-          </div>
-       </div>
-
-
-        <div class="row">
-            <label for="password" class="text-label col-xs-2 col-md-2 col-lg-2">Password</label>
-         <div class="col-xs-10 col-md-10 col-lg-10">
-
-           <div class="form-group">
-             <!-- <label for="password">Password</label> -->
-             <input
-               type="password"
-               name="password"
-               formControlName="password"
-               class="form-control transparent-input"
-             />
-           </div>
-          </div>
-       </div>
-
-
-
-       <!-- <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="role">Role</label>
-            <input
-
-              type="text"
-              name="role"
-              formControlName="role"
-              class="form-control transparent-input"
-            />
-          </div>
-        </div>
-      </div> -->
-
-      <div class="row">
-          <label for="school" class="text-label col-xs-2 col-md-2 col-lg-2">School</label>
-          <div class="col-xs-10 col-md-10 col-lg-10">
-        <!-- <div class="col-xs-12"> -->
-          <div class="form-group">
-            <!-- <label for="school">School</label> -->
-            <input
-              type="text"
-              name="school"
-              formControlName="school"
-              class="form-control transparent-input"
-            />
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="input-group form-group" formArrayName="role">
-          <div
-              class="row"
-              *ngFor="let signupCtrl of getControls(); let i = index"
-              [formGroupName]="i"
-              style="margin-top: 10px;"
-              >
-               <label class="text-label input-group-text" for="role-select">Role</label>
-              <select class="role-select form-control col-xs-10 col-md-10 col-lg-10" id="role-select" formControlName="index">
-                <option selected>Choose a Role</option>
-                <option value="student">Student</option>
-                <option value="professor">Professor</option>
-              </select>
-           </div>
-      </div>
-
-
-      <div class="row">
-       <!-- <div class="b col-xs-10 col-md-10 col-lg-10"> -->
-           <button class="submit">Sign Up</button>
-       <!-- </div> -->
-     </div>
-  </form>
-  <div>
-      <p class="footerHeart">Made with &hearts; from TheHiddenTent 2018</p>
+  <div class="form-group">
+    <label for="email" class="text-label">Email</label>
+    <input
+      type="email"
+      name="email"
+      formControlName='email'
+      class="form-control"
+    />
   </div>
-  <div>&#160;</div>
-  <div>&#160;</div>
-  <div>&#160;</div>
-  <div>&#160;</div>
-  <div>&#160;</div>
 
+  <div class="form-group">
+    <label for="password" class="text-label">Password</label>
+    <input
+      type="password"
+      name="password"
+      formControlName="password"
+      class="form-control transparent-input"
+    />
+  </div>
 
+  <div class="form-group">
+    <label for="school" class="text-label">School</label>
+    <input
+      type="text"
+      name="school"
+      formControlName="school"
+      class="form-control transparent-input"
+    />
+  </div>
 
+  <div class="form-group" formArrayName="role">
+    <label class="text-label" for="role-select">Role</label>
 
-</div>
+    <div
+    *ngFor="let signupCtrl of getControls(); let i = index"
+    [formGroupName]="i"
+    >
+      <select
+        class="role-select form-control"
+        id="role-select" formControlName="index">
+        <option selected>Choose a Role</option>
+        <option value="student">Student</option>
+        <option value="professor">Professor</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sign-up">
+    <p (click)="toggleStatus()">Do not have an account? Sign up now!</p>
+    <p>Forgot password?</p>
+  </div>
+
+  <button class="submit" class="btn btn-primary" (click)="test()">Sign Up</button>
+</form>
 
 
